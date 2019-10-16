@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useCallback,useRef} from 'react';
 import TodoTemplate from "./components/TodoTemplate";
 import TodoInsert from './components/TodoInsert';
 import TodoList from './components/TodoList';
@@ -12,11 +12,26 @@ const App = () => {
     { id:3,text:'일정 관리 앱 만들어 보기',checked:false}
   ]);
 
+  const nextId = useRef(4); //useState(4)는 낭비이므로 ref로 하자
+
+  const onInsert = useCallback(
+    text => {
+      const todo = {
+        id:nextId.current,
+        text,
+        checked:false
+      };
+      setTodos(todos.concat(todo));
+      nextId.current += 1;// nextId 1씩 더하기
+    },[todos]
+  );
+
+
   
   return (
     <div>
       <TodoTemplate>
-        <TodoInsert/>
+        <TodoInsert onInsert={onInsert}/>
         <TodoList todos={todos}/>
       </TodoTemplate>
     </div>
