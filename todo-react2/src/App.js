@@ -26,13 +26,26 @@ const App = () => {
     },[todos]
   );
 
+  const onRemove = useCallback(
+    id => {
+      setTodos(todos.filter( (inPut)=> inPut.id !== id) )
+    },[todos]
+  );
 
+  const onToggle = useCallback(
+    id=>{
+      setTodos(
+        todos.map(todo=>
+          todo.id===id ? {...todo,checked:!todo.checked}:todo) //todo.id랑id가 다르면 들어온 todo가 똑같은 todo로 탈출.
+      );
+    },[todos],
+  )
   
   return (
     <div>
       <TodoTemplate>
         <TodoInsert onInsert={onInsert}/>
-        <TodoList todos={todos}/>
+        <TodoList todos={todos} onRemove = {onRemove} onToggle={onToggle}/>
       </TodoTemplate>
     </div>
   );
