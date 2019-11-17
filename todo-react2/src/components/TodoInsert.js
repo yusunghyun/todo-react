@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { MdAdd } from 'react-icons/md'; // MdAdd라는 아이콘을 쓴다!
 import './TodoInsert.scss';
 
-const TodoInsert = ({ a }) => {
+const TodoInsert = ({ b }) => {
   //여기있는 {onInsert}는 상위에서 받아오는 겨 !
 
   const [value, setValue] = useState(''); // 입력창의 기본값
@@ -13,11 +13,11 @@ const TodoInsert = ({ a }) => {
 
   const onSubmit = useCallback(
     e => {
-      a(value); // a = {oninsertText} 이니까 value 들어가면 틀도 만들어지고 nextid+=1 도 이루어짐.
+      b(value); // b = {oninsertText} 이니까 value 들어가면 틀도 만들어지고 nextid+=1 도 이루어짐.
       setValue('');//다시 입력창 초기화
       e.preventDefault(); /*onSubmit은 새로고침을 발생시켜 이를 방지용 외워 국룰 */
     },
-    [a, value], // 입력에 따라 실시간 패치를 해야하니까 갑자기 엔터박아도 목록에 들어갈 수 있도록. a 지우면 경고줄이 뜨네 ?.?
+    [b, value], // 입력에 따라 실시간 패치를 해야하니까 갑자기 엔터박아도 목록에 들어갈 수 있도록. b 지우면 경고줄이 뜨네 ?.?
   ); // submit:엔터가능새로고침발생폼에넣기,click:엔터따로버튼에넣기
 
   return (

@@ -49,14 +49,13 @@ const App = () => {
     },
     [], //[todos]에서 todos 뺀다음 38번줄 setTodos()에 todos => 추가함.
   );
-
   return (
     <div>
       <TodoTemplate>
         <TodoInsert
-          a={
+          b={
             insertText
-          } /* 설명 : 좌항a는 보낼 이름. 우항{insertText}는 보낼 a의 내용 . todoInsert로 넘길꺼.*/
+          } /* 설명 : 좌항b는 보낼 이름. 우항{insertText}는 보낼 a의 내용 . todoInsert로 넘길꺼.*/
         />
         <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle} />
       </TodoTemplate>

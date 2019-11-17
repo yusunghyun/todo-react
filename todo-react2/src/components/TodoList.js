@@ -4,9 +4,11 @@ import './TodoList.scss';
 
 const TodoList = ({ todos, onRemove, onToggle }) => {
   //todos라는 객체들의 배열을 받아왔고 9번줄에서 한개씩 투입할 예정
+  const rev = [...todos];//새로받아온 배열을 뒤집을꺼얌 
+  rev.reverse();
   return (
     <div className="TodoList">
-      {todos.map(doo => ( //아 onRemove랑 onToggle은 그대로 아이템으로 넘어가는데 todos는 전체내용배열?이므로 하나씩 쪼갠걸로 보내주네 그니 이름이 다름ㅋ
+      {rev.map(doo => ( //아 onRemove랑 onToggle은 그대로 아이템으로 넘어가는데 todos는 전체내용배열?이므로 하나씩 쪼갠걸로 보내주네 그니 이름이 다름ㅋ
         <TodoListItem
           todo2={doo}
           key={doo.id}

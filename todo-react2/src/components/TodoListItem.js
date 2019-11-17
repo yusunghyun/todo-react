@@ -9,6 +9,7 @@ import './TodoListItem.scss';
 
 const TodoListItem = ({ todo2, onRemove, onToggle }) => {
   const   {checked} = todo2; // *개씹중요*   const {id} = todo2; 하면 todo2의 id값이 좌항 id로 들어감. const id = todo2.id 와 동일
+  
   return ( //cn이 뭔데.
     <div className="TodoListItem">
       <div className={cn('checkbox', { checked })} onClick={() => onToggle(todo2.id)}>
